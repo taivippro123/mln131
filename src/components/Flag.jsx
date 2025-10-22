@@ -8,7 +8,7 @@ const CHECKPOINTS = [
   {"id":132, "row":8, "col":12, "pixel_center":[864,544]},
   {"id":133, "row":4, "col":17, "pixel_center":[1120,288]},
   {"id":134, "row":10, "col":17, "pixel_center":[1120,672]},
-  {"id":135, "row":10, "col":24, "pixel_center":[1568,672]}
+  {"id":135, "row":10, "col":23, "pixel_center":[1504,672]}
 ]
 
 // Path segments between checkpoints
@@ -54,8 +54,7 @@ const PATH_SEGMENTS = {
     {"row":10,"col":20,"pixel_center":[1312,672]},
     {"row":10,"col":21,"pixel_center":[1376,672]},
     {"row":10,"col":22,"pixel_center":[1440,672]},
-    {"row":10,"col":23,"pixel_center":[1504,672]},
-    {"row":10,"col":24,"pixel_center":[1568,672]}
+    {"row":10,"col":23,"pixel_center":[1504,672]}
   ]
 }
 
@@ -92,6 +91,10 @@ export default function Flag({ isAnimating, onAnimationComplete, onPositionUpdat
     // Get path segment for current checkpoint
     const pathKey = `${currentCheckpoint}-${currentCheckpoint + 1}`
     const pathTiles = PATH_SEGMENTS[pathKey]
+    
+    console.log(`Looking for path segment: ${pathKey}`)
+    console.log(`Available path segments:`, Object.keys(PATH_SEGMENTS))
+    console.log(`Found path tiles:`, pathTiles)
     
     if (!pathTiles) {
       console.log(`No path found for segment ${pathKey}`)
@@ -154,90 +157,49 @@ export default function Flag({ isAnimating, onAnimationComplete, onPositionUpdat
   }
   const [x, y] = currentTile.pixel_center
 
+  // Determine which flag to show based on animation stage
+  const getFlagImage = () => {
+    if (currentCheckpoint === 0) {
+      // Stage 1 → 2: Show mtdtgpmnvn.png
+      return "/mtdtgpmnvn.png"
+    } else if (currentCheckpoint === 1) {
+      // Stage 2 → 3: Still show mtdtgpmnvn.png during animation
+      return "/mtdtgpmnvn.png"
+    } else {
+      // Other stages: Default to quockyvietnam.jpg
+      return "/quockyvietnam.jpg"
+    }
+  }
+
   return (
     <div
       ref={flagRef}
-      className="absolute pointer-events-none z-50 transition-all duration-200 ease-out"
+      className="absolute pointer-events-none z-30 transition-all duration-200 ease-out"
       style={{
         left: `${x - 16}px`, // Offset để center flag
         top: `${y - 24}px`,  // Offset để center flag
         transform: 'translate(-50%, -50%)',
       }}
     >
-      {/* Flag SVG with enhanced styling */}
-      <svg
+      {/* Flag Image with enhanced styling */}
+      <img
+        src={getFlagImage()}
+        alt="Vietnam Flag"
         width="32"
         height="32"
-        viewBox="0 0 32 32"
-        className="drop-shadow-lg filter drop-shadow-md"
-      >
-        {/* Flag pole with gradient */}
-        <defs>
-          <linearGradient id="poleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#D2691E" />
-            <stop offset="100%" stopColor="#8B4513" />
-          </linearGradient>
-          <linearGradient id="flagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#FF4444" />
-            <stop offset="100%" stopColor="#CC0000" />
-          </linearGradient>
-        </defs>
-        
-        {/* Flag pole */}
-        <line
-          x1="4"
-          y1="4"
-          x2="4"
-          y2="28"
-          stroke="url(#poleGradient)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
-        
-        {/* Flag */}
-        <polygon
-          points="4,4 24,8 4,12"
-          fill="url(#flagGradient)"
-          stroke="#AA0000"
-          strokeWidth="1"
-        />
-        
-        {/* Flag tip */}
-        <polygon
-          points="24,8 28,10 24,12"
-          fill="url(#flagGradient)"
-          stroke="#AA0000"
-          strokeWidth="1"
-        />
-        
-        {/* Flag number with better styling */}
-        <text
-          x="8"
-          y="10"
-          fontSize="7"
-          fill="white"
-          fontWeight="bold"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          stroke="#000000"
-          strokeWidth="0.5"
-        >
-          {currentPosition + 1}
-        </text>
-      </svg>
+        className="drop-shadow-lg filter drop-shadow-md rounded-sm"
+        style={{
+          objectFit: 'cover',
+          imageRendering: 'pixelated'
+        }}
+      />
       
       {/* Enhanced trail effects */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-3 h-3 bg-red-400 rounded-full animate-ping opacity-30"></div>
-        <div className="absolute w-1 h-1 bg-yellow-300 rounded-full animate-pulse opacity-60"></div>
+        <div className="w-3 h-3 bg-red-500 rounded-full animate-ping opacity-30"></div>
+        <div className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-pulse opacity-60"></div>
       </div>
       
-      {/* Progress indicator */}
-      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
-        <div className="text-xs text-white bg-black/50 px-2 py-1 rounded-full">
-          {currentPosition}/{pathTiles.length}
-        </div>
-      </div>
     </div>
   )
 }

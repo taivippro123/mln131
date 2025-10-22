@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import roadmapData from '/roadmap.json'
 import Flag from './components/Flag'
 import Checkpoints from './components/Checkpoints'
+import IntroModal from './components/IntroModal'
+import QuizModal from './components/QuizModal'
+import PuzzleModal from './components/PuzzleModal'
+import FinalCompletionModal from './components/FinalCompletionModal'
 
 const TILE_SIZE = 64
 const MAP_WIDTH = roadmapData.width
@@ -12,10 +16,16 @@ export default function App() {
   const [tilesLoaded, setTilesLoaded] = useState(false)
   const [isFlagAnimating, setIsFlagAnimating] = useState(false)
   const [animationComplete, setAnimationComplete] = useState(false)
-  const [showCheckpoints, setShowCheckpoints] = useState(false)
+  const [showCheckpoints, setShowCheckpoints] = useState(true)
   const [currentFlagPosition, setCurrentFlagPosition] = useState(0)
   const [currentCheckpoint, setCurrentCheckpoint] = useState(0)
   const [animationKey, setAnimationKey] = useState(0)
+  const [showIntroModal, setShowIntroModal] = useState(true)
+  const [showQuizModal, setShowQuizModal] = useState(false)
+  const [showPuzzleModal, setShowPuzzleModal] = useState(false)
+  const [showFinalModal, setShowFinalModal] = useState(false)
+  const [currentStage, setCurrentStage] = useState('')
+  const [completedCheckpoints, setCompletedCheckpoints] = useState([])
   const tilesRef = useRef({})
 
   // Load tiles
@@ -92,22 +102,14 @@ export default function App() {
     })
   }, [tilesLoaded])
 
-  const handleNextCheckpoint = () => {
-    if (currentCheckpoint >= 4) return // Already at last checkpoint
-    
-    setIsFlagAnimating(true)
-    setAnimationComplete(false)
-    setCurrentFlagPosition(0)
-    setAnimationKey(prev => prev + 1) // Force re-render
-  }
-
-  const handleStopAnimation = () => {
-    setIsFlagAnimating(false)
-  }
 
   const handleAnimationComplete = () => {
     setIsFlagAnimating(false)
-    setCurrentCheckpoint(prev => prev + 1)
+    setCurrentCheckpoint(prev => {
+      const newCheckpoint = prev + 1
+      console.log('Animation completed! Moving to checkpoint', newCheckpoint)
+      return newCheckpoint
+    })
     
     if (currentCheckpoint >= 4) {
       setAnimationComplete(true)
@@ -118,8 +120,129 @@ export default function App() {
     setCurrentFlagPosition(position)
   }
 
+  const getCheckpointPosition = (checkpointIndex) => {
+    const checkpointPositions = [
+      { x: 416, y: 544 }, // Checkpoint 1
+      { x: 864, y: 544 }, // Checkpoint 2  
+      { x: 1120, y: 288 }, // Checkpoint 3
+      { x: 1120, y: 672 }, // Checkpoint 4
+      { x: 1504, y: 672 }  // Checkpoint 5
+    ]
+    return checkpointPositions[checkpointIndex] || checkpointPositions[0]
+  }
+
+  const getStaticFlagImage = (checkpointIndex) => {
+    if (checkpointIndex === 1) {
+      // At checkpoint 2: Show mtdtgpmnvn.png
+      return "/mtdtgpmnvn.png"
+    } else if (checkpointIndex >= 2) {
+      // At checkpoint 3 and beyond: Show quockyvietnam.jpg
+      return "/quockyvietnam.jpg"
+    } else {
+      // At checkpoint 1: Show quockyvietnam.jpg
+      return "/quockyvietnam.jpg"
+    }
+  }
+
+  const handleNextCheckpoint = () => {
+    if (currentCheckpoint >= 4) return // Already at last checkpoint
+    
+    // Show quiz for current checkpoint (not next one)
+    const stageMap = {
+      0: 'Stage 1',
+      1: 'Stage 2', 
+      2: 'Stage 3',
+      3: 'Stage 4',
+      4: 'Stage 5'
+    }
+    
+    setCurrentStage(stageMap[currentCheckpoint])
+    setShowQuizModal(true)
+  }
+
+  const handleStartQuiz = (checkpointId, checkpointIndex) => {
+    console.log('Starting quiz for checkpoint:', checkpointIndex) // Debug log
+    const stageMap = {
+      0: 'Stage 1',
+      1: 'Stage 2', 
+      2: 'Stage 3',
+      3: 'Stage 4',
+      4: 'Stage 5'
+    }
+    
+    setCurrentStage(stageMap[checkpointIndex])
+    setShowQuizModal(true)
+  }
+
+  const handleStopAnimation = () => {
+    setIsFlagAnimating(false)
+  }
+
+  const handleResetJourney = () => {
+    setCurrentCheckpoint(0)
+    setCurrentFlagPosition(0)
+    setIsFlagAnimating(false)
+    setAnimationComplete(false)
+    setAnimationKey(prev => prev + 1)
+  }
+
+  const handleQuizComplete = () => {
+    setShowQuizModal(false)
+    setShowPuzzleModal(true)
+  }
+
+  const handlePuzzleComplete = (success) => {
+    setShowPuzzleModal(false)
+    
+    if (success) {
+      console.log('Puzzle completed! Moving from checkpoint', currentCheckpoint, 'to', currentCheckpoint + 1)
+      // Mark current checkpoint as completed
+      setCompletedCheckpoints(prev => [...prev, currentCheckpoint])
+      
+      // Check if this is the last checkpoint (Stage 5 completed)
+      if (currentCheckpoint === 4) {
+        // Show final completion modal
+        setShowFinalModal(true)
+      } else {
+        // Start flag animation to next checkpoint
+        setIsFlagAnimating(true)
+        setAnimationComplete(false)
+        setCurrentFlagPosition(0)
+        setAnimationKey(prev => prev + 1)
+      }
+    }
+  }
+
   return (
     <div className="w-screen h-screen overflow-hidden flex items-center justify-center relative">
+      {/* Intro Modal */}
+      <IntroModal 
+        isOpen={showIntroModal} 
+        onClose={() => setShowIntroModal(false)} 
+      />
+
+      {/* Quiz Modal */}
+      <QuizModal
+        isOpen={showQuizModal}
+        onClose={() => setShowQuizModal(false)}
+        currentStage={currentStage}
+        onQuizComplete={handleQuizComplete}
+      />
+
+      {/* Puzzle Modal */}
+      <PuzzleModal
+        isOpen={showPuzzleModal}
+        onClose={() => setShowPuzzleModal(false)}
+        currentStage={currentStage}
+        onPuzzleComplete={handlePuzzleComplete}
+      />
+
+      {/* Final Completion Modal */}
+      <FinalCompletionModal
+        isOpen={showFinalModal}
+        onClose={() => setShowFinalModal(false)}
+      />
+
       {!tilesLoaded && (
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <p className="text-gray-800 text-2xl">Loading...</p>
@@ -136,8 +259,9 @@ export default function App() {
         
         {/* Checkpoints */}
         <Checkpoints 
-          showCheckpoints={showCheckpoints}
           currentPosition={currentFlagPosition}
+          completedCheckpoints={completedCheckpoints}
+          onStartQuiz={handleStartQuiz}
         />
         
         {/* Flag Animation */}
@@ -148,51 +272,30 @@ export default function App() {
           onPositionUpdate={handleFlagPositionUpdate}
           currentCheckpoint={currentCheckpoint}
         />
-      </div>
 
-      {/* Compact Controls */}
-      <div className="absolute top-4 left-4 z-20">
-        <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-gray-200">
-          <h3 className="text-sm font-bold mb-2 text-gray-800 flex items-center">
-            🚩 Flag Journey
-          </h3>
-          
-          <div className="space-y-2">
-            <button
-              onClick={handleNextCheckpoint}
-              disabled={!tilesLoaded || isFlagAnimating || currentCheckpoint >= 4}
-              className="w-full px-3 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-md hover:from-blue-600 hover:to-blue-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium"
-            >
-              {isFlagAnimating ? '🚀 Moving...' : `Next Checkpoint (${currentCheckpoint + 1}/5)`}
-            </button>
-            
-            <button
-              onClick={handleStopAnimation}
-              disabled={!isFlagAnimating}
-              className="w-full px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-md hover:from-red-600 hover:to-red-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium"
-            >
-              ⏹️ Stop
-            </button>
-
-            <button
-              onClick={() => setShowCheckpoints(!showCheckpoints)}
-              className="w-full px-3 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-md hover:from-green-600 hover:to-green-700 transition-all duration-200 text-sm font-medium"
-            >
-              {showCheckpoints ? '🙈 Hide' : '📍 Show'} Checkpoints
-            </button>
+        {/* Vietnam Flag - Moves with current checkpoint */}
+        {!isFlagAnimating && (
+          <div 
+            className="absolute pointer-events-none z-30 transition-all duration-500"
+            style={{
+              left: `${getCheckpointPosition(currentCheckpoint).x - 24}px`,
+              top: `${getCheckpointPosition(currentCheckpoint).y + 30}px`,
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
+            }}
+          >
+            <img
+              src={getStaticFlagImage(currentCheckpoint)}
+              alt="Vietnam Flag"
+              width="48"
+              height="48"
+              className="rounded-lg border-2 border-white/50"
+              style={{
+                objectFit: 'cover',
+                imageRendering: 'pixelated'
+              }}
+            />
           </div>
-
-          {animationComplete && (
-            <div className="mt-2 p-2 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded text-xs font-medium border border-green-300">
-              🎉 Journey completed!
-            </div>
-          )}
-
-          <div className="mt-2 text-xs text-gray-600">
-            <p>Path: 131 → 132 → 133 → 134 → 135</p>
-            <p>Current: {currentCheckpoint + 1}/5</p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   )

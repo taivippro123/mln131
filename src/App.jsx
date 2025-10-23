@@ -28,6 +28,112 @@ export default function App() {
   const [completedCheckpoints, setCompletedCheckpoints] = useState([])
   const tilesRef = useRef({})
 
+  // Function to get correct asset path for tile ID
+  const getTileAssetPath = (tileNum) => {
+    // Handle flipped/rotated tiles by extracting base tile ID
+    const getBaseTileId = (tileId) => {
+      // Remove flip flags (bit 31, 30, 29)
+      return tileId & 0x0FFFFFFF
+    }
+    
+    const baseTileId = getBaseTileId(tileNum)
+    
+    // tile5.tsx tileset (firstgid: 494) - Individual tile images (all 64x64)
+    if (baseTileId >= 494 && baseTileId <= 530) {
+      // Create mapping based on actual tile5.tsx structure (37 tiles, all 64x64)
+      const tile5Assets = [
+        '1-removebg-preview (1).png',      // 494 -> 0
+        '2-removebg-preview.png',         // 495 -> 1
+        'covietnam.png',                  // 496 -> 2
+        'thuyen2.png',                    // 497 -> 3
+        'thuyen2.png',                    // 498 -> 4
+        'maybay.png',                     // 499 -> 5
+        'xetai.png',                      // 500 -> 6
+        'thuyen2.png',                    // 501 -> 7
+        'covietnam.png',                  // 502 -> 8
+        'thuyen2.png',                    // 503 -> 9
+        'thuyen2.png',                    // 504 -> 10
+        'maybay.png',                     // 505 -> 11
+        'xetai.png',                      // 506 -> 12
+        'thuyen2.png',                    // 507 -> 13
+        '',                               // 508 -> 14 (empty)
+        '',                               // 509 -> 15 (empty)
+        'thuyen3.png',                    // 510 -> 16 (now 64x64)
+        'phuongtien.png',                 // 511 -> 17
+        'phuongtien2.png',                // 512 -> 18
+        'phuongtien1.png',                // 513 -> 19
+        'number1 (1).jpg',               // 514 -> 20
+        'number6 (1).jpg',                // 515 -> 21
+        'number3 (1).jpg',                // 516 -> 22
+        'number2 (1).jpg',                // 517 -> 23
+        'number5 (1).jpg',                // 518 -> 24
+        'nhamay.png',                     // 519 -> 25
+        'xe2-removebg-preview.png',       // 520 -> 26
+        'xe-removebg-preview.png',        // 521 -> 27
+        'baogao-removebg-preview.png',    // 522 -> 28
+        'trau-removebg-preview.png',      // 523 -> 29
+        'xetang2.png',                    // 524 -> 30
+        'xetai2.png',                     // 525 -> 31
+        'nguoi2-removebg-preview.png',    // 526 -> 32
+        'nguoi-removebg-preview.png',     // 527 -> 33
+        'coVietNam2 (1).png',            // 528 -> 34
+        'thuyen3_2.png',                 // 529 -> 35 (NEW)
+        'thuyen3_1.png'                  // 530 -> 36 (NEW)
+      ]
+      
+      const localId = baseTileId - 494
+      if (localId >= 0 && localId < tile5Assets.length && tile5Assets[localId]) {
+        return `/asset/${tile5Assets[localId]}`
+      }
+    }
+    
+    // giaidoan3.tsx tileset (firstgid: 430) - Single image tileset
+    if (baseTileId >= 430 && baseTileId <= 493) {
+      return `/asset/giaidoan3.png`
+    }
+    
+    // giaidoan2.tsx tileset (firstgid: 366) - Single image tileset
+    if (baseTileId >= 366 && baseTileId <= 429) {
+      return `/asset/giaidoan2.png`
+    }
+    
+    // giaidoan1.tsx tileset (firstgid: 302) - Single image tileset
+    if (baseTileId >= 302 && baseTileId <= 365) {
+      return `/asset/giaidoan1.png`
+    }
+    
+    // unnamed-removebg-preview.tsx tileset (firstgid: 253) - Single image tileset
+    if (baseTileId >= 253 && baseTileId <= 301) {
+      return `/asset/unnamed-removebg-preview.png`
+    }
+    
+    // tile3.tsx tileset (firstgid: 189) - Single image tileset
+    if (baseTileId >= 189 && baseTileId <= 252) {
+      return `/asset/0605d382-107b-4089-8536-bc9dd76f614d.png`
+    }
+    
+    // tile.tsx tileset (firstgid: 1) - Individual tile images
+    if (baseTileId >= 1 && baseTileId <= 188) {
+      return `/tiles/mapTile_${String(baseTileId).padStart(3, '0')}.png`
+    }
+    
+    // Handle special tiles that might be from other sources
+    // These could be special tiles or from additional tilesets
+    
+    if (baseTileId >= 500 && baseTileId <= 600) {
+      // Try to load from tiles directory with extended range
+      return `/tiles/mapTile_${String(baseTileId).padStart(3, '0')}.png`
+    }
+    
+    // For very large tile IDs, they might be special markers
+    if (baseTileId > 1000) {
+      return null // Skip these
+    }
+    
+    // Default fallback - try to load anyway
+    return `/tiles/mapTile_${String(baseTileId).padStart(3, '0')}.png`
+  }
+
   // Load tiles
   useEffect(() => {
     // Get unique tile IDs from ALL layers
@@ -41,16 +147,32 @@ export default function App() {
     
     const loadPromises = tilesToLoad.map(tileNum => {
       return new Promise((resolve) => {
+        const assetPath = getTileAssetPath(tileNum)
+        
+        // Skip tiles that return null (special markers, etc.)
+        if (assetPath === null) {
+          resolve()
+          return
+        }
+        
         const img = new Image()
         img.onload = () => {
           // Just store the original image - PNG alpha will be preserved
           tilesRef.current[tileNum] = img
+          console.log(`Successfully loaded tile ${tileNum}: ${assetPath}`)
           resolve()
         }
-        img.onerror = () => resolve()
+        img.onerror = () => {
+          // Only log error for tiles that are actually expected to exist
+          const baseTileId = tileNum & 0x0FFFFFFF
+          if (baseTileId >= 1 && baseTileId <= 600) {
+            console.log(`Failed to load tile ${tileNum}: ${assetPath}`)
+          }
+          resolve()
+        }
         // IMPORTANT: Set crossOrigin before src to preserve alpha
         img.crossOrigin = 'anonymous'
-        img.src = `/tiles/mapTile_${String(tileNum).padStart(3, '0')}.png`
+        img.src = assetPath
       })
     })
 
@@ -58,6 +180,101 @@ export default function App() {
       setTilesLoaded(true)
     })
   }, [])
+
+  // Function to get tile source rectangle for single image tilesets
+  const getTileSourceRect = (tileNum, img) => {
+    // Handle flipped/rotated tiles by extracting base tile ID
+    const getBaseTileId = (tileId) => {
+      // Remove flip flags (bit 31, 30, 29)
+      return tileId & 0x0FFFFFFF
+    }
+    
+    const baseTileId = getBaseTileId(tileNum)
+    
+    // tile3.tsx tileset (firstgid: 189) - 8x8 grid
+    if (baseTileId >= 189 && baseTileId <= 252) {
+      const localId = baseTileId - 189
+      const tileX = localId % 8
+      const tileY = Math.floor(localId / 8)
+      return {
+        sx: tileX * 64,
+        sy: tileY * 64,
+        sw: 64,
+        sh: 64
+      }
+    }
+    
+    // giaidoan1.tsx tileset (firstgid: 302) - 8x8 grid
+    if (baseTileId >= 302 && baseTileId <= 365) {
+      const localId = baseTileId - 302
+      const tileX = localId % 8
+      const tileY = Math.floor(localId / 8)
+      return {
+        sx: tileX * 64,
+        sy: tileY * 64,
+        sw: 64,
+        sh: 64
+      }
+    }
+    
+    // giaidoan2.tsx tileset (firstgid: 366) - 8x8 grid
+    if (baseTileId >= 366 && baseTileId <= 429) {
+      const localId = baseTileId - 366
+      const tileX = localId % 8
+      const tileY = Math.floor(localId / 8)
+      return {
+        sx: tileX * 64,
+        sy: tileY * 64,
+        sw: 64,
+        sh: 64
+      }
+    }
+    
+    // giaidoan3.tsx tileset (firstgid: 430) - 8x8 grid
+    if (baseTileId >= 430 && baseTileId <= 493) {
+      const localId = baseTileId - 430
+      const tileX = localId % 8
+      const tileY = Math.floor(localId / 8)
+      return {
+        sx: tileX * 64,
+        sy: tileY * 64,
+        sw: 64,
+        sh: 64
+      }
+    }
+    
+    // unnamed-removebg-preview.tsx tileset (firstgid: 253) - 7x7 grid
+    if (baseTileId >= 253 && baseTileId <= 301) {
+      const localId = baseTileId - 253
+      const tileX = localId % 7
+      const tileY = Math.floor(localId / 7)
+      return {
+        sx: tileX * 64,
+        sy: tileY * 64,
+        sw: 64,
+        sh: 64
+      }
+    }
+    
+    // tile5.tsx tileset (firstgid: 494) - Individual tile images (all 64x64)
+    if (baseTileId >= 494 && baseTileId <= 530) {
+      // For individual tile images, use full image
+      return {
+        sx: 0,
+        sy: 0,
+        sw: img.width,
+        sh: img.height
+      }
+    }
+    
+    // For other individual tile images, use full image
+    return {
+      sx: 0,
+      sy: 0,
+      sw: img.width,
+      sh: img.height
+    }
+  }
 
   // Draw map
   useEffect(() => {
@@ -91,9 +308,79 @@ export default function App() {
           if (tileNum && tileNum > 0) {
             const img = tilesRef.current[tileNum]
             if (img) {
+              // Get source rectangle for tile
+              const sourceRect = getTileSourceRect(tileNum, img)
+              
+              // Check for flip flags
+              const isFlippedHorizontally = (tileNum & 0x80000000) !== 0
+              const isFlippedVertically = (tileNum & 0x40000000) !== 0
+              const isFlippedDiagonally = (tileNum & 0x20000000) !== 0
+              
+              const baseTileId = tileNum & 0x0FFFFFFF
+              
+              // Special handling for 1-removebg-preview and 2-removebg-preview tiles based on position
+              let shouldFlipHorizontally = isFlippedHorizontally
+              if (baseTileId === 494 || baseTileId === 495) { // 1-removebg-preview (1).png or 2-removebg-preview.png
+                // Specific positions that need to be flipped to opposite direction
+                const specificPositions = [
+                  [11, 2], [12, 3],  // Top area
+                  [18, 2], [19, 2],  // Top area
+                  [26, 3], [26, 1], [26, 2], [26, 13],  // Right area
+                  [11, 13],           // Bottom area
+                  [18, 13]            // Bottom area
+                ]
+                
+                const isSpecificPosition = specificPositions.some(([posX, posY]) => x === posX && y === posY)
+                
+                if (isSpecificPosition) {
+                  // These specific positions need to be flipped to opposite direction
+                  shouldFlipHorizontally = !isFlippedHorizontally
+                } else {
+                  // For other positions, use original logic
+                  if (x < MAP_WIDTH / 2) {
+                    shouldFlipHorizontally = !isFlippedHorizontally
+                  }
+                  if (x >= MAP_WIDTH / 2) {
+                    shouldFlipHorizontally = !isFlippedHorizontally
+                  }
+                }
+              }
+              
+
               // Draw tile - alpha channel will be respected
               ctx.save()
-              ctx.drawImage(img, x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+              
+              // Apply transformations
+              if (shouldFlipHorizontally || isFlippedVertically || isFlippedDiagonally) {
+                const centerX = x * TILE_SIZE + TILE_SIZE / 2
+                const centerY = y * TILE_SIZE + TILE_SIZE / 2
+                ctx.translate(centerX, centerY)
+                
+                if (shouldFlipHorizontally) {
+                  ctx.scale(-1, 1)
+                }
+                if (isFlippedVertically) {
+                  ctx.scale(1, -1)
+                }
+                if (isFlippedDiagonally) {
+                  ctx.rotate(Math.PI / 2)
+                }
+                
+                ctx.drawImage(
+                  img,
+                  sourceRect.sx, sourceRect.sy, sourceRect.sw, sourceRect.sh,
+                  -TILE_SIZE / 2, -TILE_SIZE / 2, TILE_SIZE, TILE_SIZE
+                )
+                
+              } else {
+                ctx.drawImage(
+                  img,
+                  sourceRect.sx, sourceRect.sy, sourceRect.sw, sourceRect.sh,
+                  x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE
+                )
+                
+              }
+              
               ctx.restore()
             }
           }

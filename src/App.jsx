@@ -13,6 +13,61 @@ const TILE_SIZE = 64
 const MAP_WIDTH = roadmapData.width
 const MAP_HEIGHT = roadmapData.height
 
+// Tính toán scale factor dựa trên kích thước màn hình và DPI
+const getScaleFactor = () => {
+  const screenWidth = window.innerWidth
+  const screenHeight = window.innerHeight
+  const devicePixelRatio = window.devicePixelRatio || 1
+  
+  // Tính toán diagonal pixel và ước tính kích thước màn hình
+  const diagonalPixels = Math.sqrt(screenWidth * screenWidth + screenHeight * screenHeight)
+  
+  // Ước tính kích thước màn hình dựa trên diagonal pixel
+  // Giả sử màn hình desktop 24" có diagonal khoảng 1920px, laptop 13" có diagonal khoảng 1600px
+  let estimatedScreenSize = 24 // inches
+  
+  if (diagonalPixels < 1400) {
+    estimatedScreenSize = 13 // laptop nhỏ
+  } else if (diagonalPixels < 1600) {
+    estimatedScreenSize = 15 // laptop trung bình
+  } else if (diagonalPixels < 1800) {
+    estimatedScreenSize = 17 // laptop lớn
+  } else if (diagonalPixels < 2000) {
+    estimatedScreenSize = 21 // desktop nhỏ
+  } else {
+    estimatedScreenSize = 24 // desktop lớn
+  }
+  
+  // Tính scale factor dựa trên kích thước màn hình
+  let scaleFactor = 1
+  
+  if (estimatedScreenSize <= 13) {
+    // Laptop 13 inch - scale nhỏ nhất
+    scaleFactor = 0.75
+  } else if (estimatedScreenSize <= 15) {
+    // Laptop 15 inch
+    scaleFactor = 0.85
+  } else if (estimatedScreenSize <= 17) {
+    // Laptop 17 inch
+    scaleFactor = 0.9
+  } else if (estimatedScreenSize <= 21) {
+    // Desktop 21 inch
+    scaleFactor = 0.95
+  } else {
+    // Desktop 24 inch trở lên
+    scaleFactor = 1
+  }
+  
+  // Điều chỉnh thêm dựa trên độ phân giải
+  if (screenWidth < 1200) {
+    scaleFactor *= 0.9
+  } else if (screenWidth > 1920) {
+    scaleFactor *= 1.1
+  }
+  
+  return Math.max(0.6, Math.min(1.3, scaleFactor))
+}
+
 export default function App() {
   const canvasRef = useRef(null)
   const [tilesLoaded, setTilesLoaded] = useState(false)
@@ -29,6 +84,7 @@ export default function App() {
   const [showCollectionModal, setShowCollectionModal] = useState(false)
   const [currentStage, setCurrentStage] = useState('')
   const [completedCheckpoints, setCompletedCheckpoints] = useLocalStorage('completedCheckpoints', [])
+  const [scaleFactor, setScaleFactor] = useState(getScaleFactor())
   const tilesRef = useRef({})
 
   // Function to get correct asset path for tile ID
@@ -145,6 +201,16 @@ export default function App() {
       console.log('Khôi phục tiến trình:', { currentCheckpoint, completedCheckpoints })
     }
   }, [currentCheckpoint, completedCheckpoints])
+
+  // Cập nhật scale factor khi resize window
+  useEffect(() => {
+    const handleResize = () => {
+      setScaleFactor(getScaleFactor())
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   // Load tiles
   useEffect(() => {
@@ -562,7 +628,7 @@ export default function App() {
         </div>
       )}
       
-      <div className="relative">
+      <div className="relative" style={{ transform: `scale(${scaleFactor})`, transformOrigin: 'center center' }}>
         <canvas
           ref={canvasRef}
           width={MAP_WIDTH * TILE_SIZE}
@@ -615,6 +681,7 @@ export default function App() {
           <button
             onClick={() => setShowCollectionModal(true)}
             className="fixed bottom-6 left-6 z-50 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg transition-colors duration-200 flex items-center gap-2"
+            style={{ transform: `scale(${1/scaleFactor})`, transformOrigin: 'bottom left' }}
             title="Xem bộ sưu tập giai đoạn đã hoàn thành"
           >
             📚 Bộ sưu tập ({completedCheckpoints.length})

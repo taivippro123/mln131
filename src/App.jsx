@@ -17,55 +17,23 @@ const MAP_HEIGHT = roadmapData.height
 const getScaleFactor = () => {
   const screenWidth = window.innerWidth
   const screenHeight = window.innerHeight
-  const devicePixelRatio = window.devicePixelRatio || 1
   
-  // Tính toán diagonal pixel và ước tính kích thước màn hình
-  const diagonalPixels = Math.sqrt(screenWidth * screenWidth + screenHeight * screenHeight)
+  // Tính toán scale dựa trên viewport để fit toàn bộ map (bao gồm cả boats)
+  const mapPixelWidth = MAP_WIDTH * TILE_SIZE
+  const mapPixelHeight = MAP_HEIGHT * TILE_SIZE
   
-  // Ước tính kích thước màn hình dựa trên diagonal pixel
-  // Giả sử màn hình desktop 24" có diagonal khoảng 1920px, laptop 13" có diagonal khoảng 1600px
-  let estimatedScreenSize = 24 // inches
+  // Thêm padding để đảm bảo boats xung quanh vẫn hiển thị
+  const paddingFactor = 0.95 // Giữ 5% padding
   
-  if (diagonalPixels < 1400) {
-    estimatedScreenSize = 13 // laptop nhỏ
-  } else if (diagonalPixels < 1600) {
-    estimatedScreenSize = 15 // laptop trung bình
-  } else if (diagonalPixels < 1800) {
-    estimatedScreenSize = 17 // laptop lớn
-  } else if (diagonalPixels < 2000) {
-    estimatedScreenSize = 21 // desktop nhỏ
-  } else {
-    estimatedScreenSize = 24 // desktop lớn
-  }
+  // Scale để fit width và height
+  const scaleX = (screenWidth * paddingFactor) / mapPixelWidth
+  const scaleY = (screenHeight * paddingFactor) / mapPixelHeight
   
-  // Tính scale factor dựa trên kích thước màn hình
-  let scaleFactor = 1
+  // Chọn scale nhỏ hơn để đảm bảo cả width và height đều fit
+  let scaleFactor = Math.min(scaleX, scaleY)
   
-  if (estimatedScreenSize <= 13) {
-    // Laptop 13 inch - scale nhỏ nhất
-    scaleFactor = 0.75
-  } else if (estimatedScreenSize <= 15) {
-    // Laptop 15 inch
-    scaleFactor = 0.85
-  } else if (estimatedScreenSize <= 17) {
-    // Laptop 17 inch
-    scaleFactor = 0.9
-  } else if (estimatedScreenSize <= 21) {
-    // Desktop 21 inch
-    scaleFactor = 0.95
-  } else {
-    // Desktop 24 inch trở lên
-    scaleFactor = 1
-  }
-  
-  // Điều chỉnh thêm dựa trên độ phân giải
-  if (screenWidth < 1200) {
-    scaleFactor *= 0.9
-  } else if (screenWidth > 1920) {
-    scaleFactor *= 1.1
-  }
-  
-  return Math.max(0.6, Math.min(1.3, scaleFactor))
+  // Giới hạn scale trong khoảng hợp lý
+  return Math.max(0.5, Math.min(1.3, scaleFactor))
 }
 
 export default function App() {
@@ -586,7 +554,14 @@ export default function App() {
   }
 
   return (
-    <div className="w-screen h-screen overflow-hidden flex items-center justify-center relative">
+    <div 
+      className="w-screen h-screen overflow-hidden flex items-center justify-center relative" 
+      style={{ 
+        backgroundImage: 'url(/tiles/mapTile_188.png)',
+        backgroundRepeat: 'repeat',
+        backgroundSize: '64px 64px'
+      }}
+    >
       {/* Intro Modal */}
       <IntroModal 
         isOpen={showIntroModal} 

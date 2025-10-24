@@ -5,11 +5,11 @@
             "question": "Sau Cách mạng Tháng Tám năm 1945, nước Việt Nam Dân chủ Cộng hòa mới thành lập phải đối mặt với khó khăn chủ yếu nào?",
             "options": {
                 "A": "Thiếu nguồn nhân lực và trình độ khoa học kỹ thuật thấp kém.",
-                "B": "Nạn đói trầm trọng, nạn mù chữ lan rộng và sự bao vây của các thế lực đế quốc.",
+                "B": "Khó khăn trong việc mở rộng quan hệ ngoại giao và thu hút viện trợ quốc tế.",
                 "C": "Thiếu vốn đầu tư, cơ sở hạ tầng yếu kém, thị trường tiêu thụ nhỏ hẹp.",
-                "D": "Khó khăn trong việc mở rộng quan hệ ngoại giao và thu hút viện trợ quốc tế."
+                "D": "Nạn đói trầm trọng, nạn mù chữ lan rộng và sự bao vây của các thế lực đế quốc."
             },
-            "answer": "B",
+            "answer": "D",
             "explanation": "Trong những năm đầu sau Cách mạng Tháng Tám, nước ta đứng trước ba “giặc”: giặc đói, giặc dốt, giặc ngoại xâm — đe dọa sự tồn vong của chính quyền cách mạng non trẻ."
         },
         {
@@ -210,12 +210,12 @@
             "questionNumber": 9,
             "question": "Trong bối cảnh toàn cầu hóa hiện nay, bài học từ tinh thần “miền Bắc vừa sản xuất, vừa chiến đấu, vừa chi viện” có ý nghĩa gì?",
             "options": {
-                "A": "Đề cao tính đoàn kết, kết hợp giữa các lĩnh vực để tạo sức mạnh tổng hợp",
+                "A": "Giảm hợp tác quốc tế",
                 "B": "Tập trung một ngành nghề duy nhất",
                 "C": "Phân tán nguồn lực, chia nhỏ công việc",
-                "D": "Giảm hợp tác quốc tế"
+                "D": "Đề cao tính đoàn kết, kết hợp giữa các lĩnh vực để tạo sức mạnh tổng hợp"
             },
-            "answer": "A",
+            "answer": "D",
             "explanation": "Tinh thần đoàn kết toàn dân – toàn hệ thống thể hiện nguyên lý tính thống nhất và toàn diện của phát triển xã hội, nay vẫn cần để kết hợp kinh tế – quốc phòng – giáo dục – khoa học trong CNXH hiện đại."
         }
     ],
@@ -260,12 +260,12 @@
             "questionNumber": 4,
             "question": "Việc duy trì cơ chế bao cấp kéo dài dẫn đến hậu quả nào dưới góc độ triết học?",
             "options": {
-                "A": "Làm suy yếu động lực của con người, triệt tiêu tính sáng tạo",
+                "A": "Tăng cạnh tranh lành mạnh",
                 "B": "Nâng cao năng suất lao động",
-                "C": "Tăng cạnh tranh lành mạnh",
+                "C": "Làm suy yếu động lực của con người, triệt tiêu tính sáng tạo",
                 "D": "Củng cố tính thị trường"
             },
-            "answer": "A",
+            "answer": "C",
             "explanation": "Bao cấp tước bỏ động lực cá nhân, mâu thuẫn giữa hình thức phân phối và năng suất lao động."
         },
         {
@@ -320,12 +320,12 @@
             "questionNumber": 9,
             "question": "Việc Việt Nam vượt qua khủng hoảng để bước vào Đổi mới năm 1986 chứng minh điều gì trong triết học Mác – Lênin?",
             "options": {
-                "A": "Thực tiễn là tiêu chuẩn của chân lý",
+                "A": "Chân lý chỉ có một hình thức",
                 "B": "Lý luận không cần thực tiễn",
                 "C": "Lý luận luôn bất biến",
-                "D": "Chân lý chỉ có một hình thức"
+                "D": "Thực tiễn là tiêu chuẩn của chân lý"
             },
-            "answer": "A",
+            "answer": "D",
             "explanation": "Thực tiễn đổi mới kinh tế khẳng định chân lý của Mác – Lênin chỉ đúng khi được vận dụng sáng tạo vào hoàn cảnh cụ thể, không máy móc, không giáo điều."
         }
     ],
@@ -394,12 +394,12 @@
             "questionNumber": 6,
             "question": "Bài học triết học quan trọng của công cuộc Đổi mới là gì?",
             "options": {
-                "A": "Tôn trọng quy luật khách quan, chống duy ý chí",
+                "A": "Đặt chính trị tách rời kinh tế",
                 "B": "Xóa bỏ sở hữu tư nhân",
-                "C": "Đặt chính trị tách rời kinh tế",
+                "C": "Tôn trọng quy luật khách quan, chống duy ý chí",
                 "D": "Phủ định vai trò thị trường"
             },
-            "answer": "A",
+            "answer": "C",
             "explanation": "Đổi mới thành công nhờ tôn trọng quy luật khách quan – nền tảng của thế giới quan Mác – Lênin."
         },
         {
@@ -430,12 +430,12 @@
             "questionNumber": 9,
             "question": "Việc kết hợp phát triển kinh tế thị trường với định hướng XHCN mang lại bài học gì cho Việt Nam hôm nay?",
             "options": {
-                "A": "Phải biết dung hòa giữa hiệu quả kinh tế và công bằng xã hội",
+                "A": "Giảm vai trò con người",
                 "B": "Ưu tiên lợi nhuận tối đa",
                 "C": "Loại bỏ sở hữu nhà nước",
-                "D": "Giảm vai trò con người"
+                "D": "Phải biết dung hòa giữa hiệu quả kinh tế và công bằng xã hội"
             },
-            "answer": "A",
+            "answer": "D",
             "explanation": "Mô hình “kinh tế thị trường định hướng XHCN” thể hiện quy luật thống nhất giữa cái đối lập, vận dụng sáng tạo phép biện chứng để bảo đảm vừa phát triển, vừa công bằng."
         }
     ],
@@ -492,12 +492,12 @@
             "questionNumber": 5,
             "question": "Chính sách phát triển con người toàn diện thể hiện tư tưởng nào của chủ nghĩa Mác?",
             "options": {
-                "A": "Con người là động lực và mục tiêu của CNXH",
+                "A": "Con người tách khỏi xã hội",
                 "B": "Con người chỉ là công cụ lao động",
                 "C": "Con người bị chi phối hoàn toàn bởi vật chất",
-                "D": "Con người tách khỏi xã hội"
+                "D": "Con người là động lực và mục tiêu của CNXH"
             },
-            "answer": "A",
+            "answer": "D",
             "explanation": "Chủ nghĩa Mác coi con người vừa là động lực, vừa là mục tiêu cuối cùng của sự nghiệp CNXH."
         },
         {
@@ -516,12 +516,12 @@
             "questionNumber": 7,
             "question": "Tư tưởng “phát triển nhanh, bền vững, nhân văn” phản ánh mối quan hệ biện chứng nào?",
             "options": {
-                "A": "Giữa tăng trưởng kinh tế và tiến bộ xã hội",
+                "A": "Giữa vật chất và ý thức",
                 "B": "Giữa đấu tranh giai cấp và chiến tranh",
-                "C": "Giữa vật chất và ý thức",
+                "C": "Giữa tăng trưởng kinh tế và tiến bộ xã hội",
                 "D": "Giữa tự nhiên và siêu hình"
             },
-            "answer": "A",
+            "answer": "C",
             "explanation": "Phát triển bền vững là thống nhất biện chứng giữa lợi ích kinh tế và giá trị nhân văn – xã hội."
         },
         {
@@ -540,12 +540,12 @@
             "questionNumber": 9,
             "question": "Bài học về phát triển bền vững trong CNXH Việt Nam hiện nay thể hiện nguyên lý nào của triết học Mác – Lênin?",
             "options": {
-                "A": "Quan điểm toàn diện và phát triển",
-                "B": "Quan điểm siêu hình",
+                "A": "Quan điểm siêu hình",
+                "B": "Quan điểm toàn diện và phát triển",
                 "C": "Quan điểm duy ý chí",
                 "D": "Quan điểm phi lịch sử"
             },
-            "answer": "A",
+            "answer": "B",
             "explanation": "Phát triển bền vững đòi hỏi xem xét mối quan hệ tổng thể giữa kinh tế – xã hội – môi trường – con người, phản ánh nguyên lý toàn diện và phát triển biện chứng."
         }
     ]

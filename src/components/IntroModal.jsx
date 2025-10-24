@@ -45,7 +45,7 @@ const IntroModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-center mb-2">
             <h2 className="text-2xl font-bold">Chào mừng đến với</h2>
           </div>
-          <h1 className="text-3xl font-bold text-center">Game Thời Kỳ Quá Độ</h1>
+          <h1 className="text-3xl font-bold text-center">Game Truy Tìm Mảnh Ghép</h1>
         </div>
 
         {/* Content */}

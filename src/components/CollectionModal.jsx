@@ -47,7 +47,7 @@ const Slide = ({ slide, index, current, handleSlideClick }) => {
     event.currentTarget.style.opacity = "1"
   }
 
-  const { src, button } = slide
+  const { src, button, stageNumber } = slide
 
   return (
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
@@ -80,7 +80,7 @@ const Slide = ({ slide, index, current, handleSlideClick }) => {
             style={{
               opacity: current === index ? 1 : 0.5,
             }}
-            alt={`Stage ${slide.stageNumber}`}
+            alt={`Stage ${stageNumber}`}
             src={src}
             onLoad={imageLoaded}
             loading="eager"
@@ -98,7 +98,7 @@ const Slide = ({ slide, index, current, handleSlideClick }) => {
           <div className="flex justify-center">
             <a
               href={src}
-              download={`giai-doan-${slide.stageNumber}.jpg`}
+              download={`giai-doan-${stageNumber}.jpg`}
               className="mt-6 px-4 py-2 w-fit mx-auto sm:text-sm text-black bg-white h-12 border border-transparent text-xs flex justify-center items-center rounded-2xl hover:shadow-lg transition duration-200 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]"
             >
               <IconDownload className="mr-2" size={16} />
@@ -124,10 +124,11 @@ const CarouselControl = ({ type, title, handleClick }) => {
   )
 }
 
-const FinalCompletionModal = ({ isOpen, onClose }) => {
+const CollectionModal = ({ isOpen, onClose, completedCheckpoints }) => {
   const [current, setCurrent] = useState(0)
 
-  const slides = [
+  // Tạo slides chỉ từ các giai đoạn đã hoàn thành
+  const allStages = [
     {
       src: "/stage1/giaidoan1.jpg",
       button: "Tải về",
@@ -170,6 +171,9 @@ const FinalCompletionModal = ({ isOpen, onClose }) => {
     },
   ]
 
+  // Lọc chỉ các giai đoạn đã hoàn thành
+  const slides = allStages.filter((_, index) => completedCheckpoints.includes(index))
+
   const handlePreviousClick = () => {
     const previous = current - 1
     setCurrent(previous < 0 ? slides.length - 1 : previous)
@@ -188,7 +192,7 @@ const FinalCompletionModal = ({ isOpen, onClose }) => {
 
   const id = useId()
 
-  if (!isOpen) return null
+  if (!isOpen || slides.length === 0) return null
 
   return (
     <div className="fixed inset-0 z-[1000] flex items-center justify-center">
@@ -208,10 +212,10 @@ const FinalCompletionModal = ({ isOpen, onClose }) => {
         {/* Header - Compact */}
         <div className="text-center mb-4">
           <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
-            🎉 Chúc mừng! Bạn đã hoàn thành 5 giai đoạn!
+            📚 Bộ sưu tập giai đoạn
           </h2>
           <p className="text-white/80 text-sm drop-shadow-md">
-            Dưới đây là hình ảnh 5 giai đoạn, bạn có thể tải về
+            Các giai đoạn bạn đã hoàn thành ({slides.length}/5)
           </p>
         </div>
 
@@ -239,20 +243,22 @@ const FinalCompletionModal = ({ isOpen, onClose }) => {
               ))}
             </ul>
 
-            {/* Navigation Controls */}
-            <div className="absolute flex justify-center w-full" style={{ top: 'calc(60vmin + 1rem)' }}>
-              <CarouselControl
-                type="previous"
-                title="Giai đoạn trước"
-                handleClick={handlePreviousClick}
-              />
+            {/* Navigation Controls - chỉ hiển thị nếu có nhiều hơn 1 slide */}
+            {slides.length > 1 && (
+              <div className="absolute flex justify-center w-full" style={{ top: 'calc(60vmin + 1rem)' }}>
+                <CarouselControl
+                  type="previous"
+                  title="Giai đoạn trước"
+                  handleClick={handlePreviousClick}
+                />
 
-              <CarouselControl
-                type="next"
-                title="Giai đoạn tiếp theo"
-                handleClick={handleNextClick}
-              />
-            </div>
+                <CarouselControl
+                  type="next"
+                  title="Giai đoạn tiếp theo"
+                  handleClick={handleNextClick}
+                />
+              </div>
+            )}
           </div>
         </div>
 
@@ -273,4 +279,4 @@ const FinalCompletionModal = ({ isOpen, onClose }) => {
   )
 }
 
-export default FinalCompletionModal
+export default CollectionModal

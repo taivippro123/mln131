@@ -6,6 +6,8 @@ import IntroModal from './components/IntroModal'
 import QuizModal from './components/QuizModal'
 import PuzzleModal from './components/PuzzleModal'
 import FinalCompletionModal from './components/FinalCompletionModal'
+import CollectionModal from './components/CollectionModal'
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 const TILE_SIZE = 64
 const MAP_WIDTH = roadmapData.width
@@ -18,14 +20,15 @@ export default function App() {
   const [animationComplete, setAnimationComplete] = useState(false)
   const [showCheckpoints, setShowCheckpoints] = useState(true)
   const [currentFlagPosition, setCurrentFlagPosition] = useState(0)
-  const [currentCheckpoint, setCurrentCheckpoint] = useState(0)
+  const [currentCheckpoint, setCurrentCheckpoint] = useLocalStorage('currentCheckpoint', 0)
   const [animationKey, setAnimationKey] = useState(0)
   const [showIntroModal, setShowIntroModal] = useState(true)
   const [showQuizModal, setShowQuizModal] = useState(false)
   const [showPuzzleModal, setShowPuzzleModal] = useState(false)
   const [showFinalModal, setShowFinalModal] = useState(false)
+  const [showCollectionModal, setShowCollectionModal] = useState(false)
   const [currentStage, setCurrentStage] = useState('')
-  const [completedCheckpoints, setCompletedCheckpoints] = useState([])
+  const [completedCheckpoints, setCompletedCheckpoints] = useLocalStorage('completedCheckpoints', [])
   const tilesRef = useRef({})
 
   // Function to get correct asset path for tile ID
@@ -133,6 +136,15 @@ export default function App() {
     // Default fallback - try to load anyway
     return `/tiles/mapTile_${String(baseTileId).padStart(3, '0')}.png`
   }
+
+  // Khôi phục trạng thái khi trang được tải lại
+  useEffect(() => {
+    // Nếu đã có tiến trình được lưu, không hiển thị intro modal
+    if (currentCheckpoint > 0 || completedCheckpoints.length > 0) {
+      setShowIntroModal(false)
+      console.log('Khôi phục tiến trình:', { currentCheckpoint, completedCheckpoints })
+    }
+  }, [currentCheckpoint, completedCheckpoints])
 
   // Load tiles
   useEffect(() => {
@@ -467,10 +479,13 @@ export default function App() {
 
   const handleResetJourney = () => {
     setCurrentCheckpoint(0)
+    setCompletedCheckpoints([])
     setCurrentFlagPosition(0)
     setIsFlagAnimating(false)
     setAnimationComplete(false)
     setAnimationKey(prev => prev + 1)
+    // Hiển thị lại intro modal khi reset
+    setShowIntroModal(true)
   }
 
   const handleQuizComplete = () => {
@@ -484,7 +499,11 @@ export default function App() {
     if (success) {
       console.log('Puzzle completed! Moving from checkpoint', currentCheckpoint, 'to', currentCheckpoint + 1)
       // Mark current checkpoint as completed
-      setCompletedCheckpoints(prev => [...prev, currentCheckpoint])
+      setCompletedCheckpoints(prev => {
+        const newCompleted = [...prev, currentCheckpoint]
+        console.log('Lưu tiến trình checkpoint:', newCompleted)
+        return newCompleted
+      })
       
       // Check if this is the last checkpoint (Stage 5 completed)
       if (currentCheckpoint === 4) {
@@ -528,6 +547,13 @@ export default function App() {
       <FinalCompletionModal
         isOpen={showFinalModal}
         onClose={() => setShowFinalModal(false)}
+      />
+
+      {/* Collection Modal */}
+      <CollectionModal
+        isOpen={showCollectionModal}
+        onClose={() => setShowCollectionModal(false)}
+        completedCheckpoints={completedCheckpoints}
       />
 
       {!tilesLoaded && (
@@ -582,6 +608,17 @@ export default function App() {
               }}
             />
           </div>
+        )}
+
+        {/* Collection Button - góc dưới bên trái */}
+        {completedCheckpoints.length > 0 && (
+          <button
+            onClick={() => setShowCollectionModal(true)}
+            className="fixed bottom-6 left-6 z-50 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg transition-colors duration-200 flex items-center gap-2"
+            title="Xem bộ sưu tập giai đoạn đã hoàn thành"
+          >
+            📚 Bộ sưu tập ({completedCheckpoints.length})
+          </button>
         )}
       </div>
     </div>

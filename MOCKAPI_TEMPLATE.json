@@ -1,0 +1,588 @@
+[
+  {
+    "stage": 1,
+    "questionNumber": 1,
+    "question": "Sau Cách mạng Tháng Tám năm 1945, nước Việt Nam Dân chủ Cộng hòa mới thành lập phải đối mặt với khó khăn chủ yếu nào?",
+    "options": {
+      "A": "Thiếu nguồn nhân lực và trình độ khoa học kỹ thuật thấp kém.",
+      "B": "Khó khăn trong việc mở rộng quan hệ ngoại giao và thu hút viện trợ quốc tế.",
+      "C": "Thiếu vốn đầu tư, cơ sở hạ tầng yếu kém, thị trường tiêu thụ nhỏ hẹp.",
+      "D": "Nạn đói trầm trọng, nạn mù chữ lan rộng và sự bao vây của các thế lực đế quốc."
+    },
+    "answer": "D",
+    "explanation": "Trong những năm đầu sau Cách mạng Tháng Tám, nước ta đứng trước ba \"giặc\": giặc đói, giặc dốt, giặc ngoại xâm — đe dọa sự tồn vong của chính quyền cách mạng non trẻ."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 2,
+    "question": "Sau khi giành độc lập năm 1945, Chủ tịch Hồ Chí Minh và Đảng ta đã lựa chọn con đường phát triển nào cho dân tộc Việt Nam?",
+    "options": {
+      "A": "Xây dựng nền dân chủ nhân dân, tiến lên chủ nghĩa xã hội, bỏ qua giai đoạn tư bản chủ nghĩa.",
+      "B": "Cải cách kinh tế theo mô hình thị trường tự do, tăng cường hội nhập với phương Tây.",
+      "C": "Phát triển kinh tế tư bản dân tộc, từng bước tiến lên chủ nghĩa xã hội trong tương lai xa.",
+      "D": "Duy trì nền kinh tế nông nghiệp tự cấp tự túc kết hợp mở rộng thương mại quốc tế."
+    },
+    "answer": "A",
+    "explanation": "Hồ Chí Minh khẳng định: \"Chúng ta đi lên chủ nghĩa xã hội từ một nước nông nghiệp lạc hậu, không qua giai đoạn tư bản chủ nghĩa.\" Đây là định hướng chiến lược của cách mạng Việt Nam."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 3,
+    "question": "Nhiệm vụ hàng đầu của chính quyền cách mạng sau Cách mạng Tháng Tám năm 1945 là gì?",
+    "options": {
+      "A": "Phát triển kinh tế công nghiệp và mở rộng ngoại thương.",
+      "B": "Củng cố chính quyền cách mạng, diệt \"giặc đói, giặc dốt, giặc ngoại xâm\".",
+      "C": "Cải cách hành chính và thu hút đầu tư nước ngoài.",
+      "D": "Mở rộng hệ thống giáo dục đại học và cải cách thi cử."
+    },
+    "answer": "B",
+    "explanation": "Chính quyền non trẻ cần được củng cố; các phong trào diệt giặc đói, giặc dốt, giặc ngoại xâm là nhiệm vụ cấp bách nhất giai đoạn 1945–1946."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 4,
+    "question": "Một trong những nhiệm vụ kinh tế – xã hội trọng tâm của Nhà nước Việt Nam Dân chủ Cộng hòa trong giai đoạn 1945–1954 là:",
+    "options": {
+      "A": "Quốc hữu hóa toàn bộ doanh nghiệp tư nhân.",
+      "B": "Cải cách ruộng đất, chia lại ruộng cho nông dân, khôi phục sản xuất.",
+      "C": "Tập trung vào phát triển công nghiệp nặng.",
+      "D": "Thiết lập hệ thống tài chính – ngân hàng trung ương hiện đại."
+    },
+    "answer": "B",
+    "explanation": "Cải cách ruộng đất là chính sách lớn, góp phần củng cố liên minh công – nông, tạo cơ sở xã hội vững chắc cho cách mạng."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 5,
+    "question": "Trong quá trình xây dựng nền tảng chính trị mới, Đảng và Nhà nước ta đặc biệt chú trọng nhiệm vụ nào?",
+    "options": {
+      "A": "Mở rộng thương mại quốc tế và hội nhập khu vực.",
+      "B": "Xây dựng nhà nước pháp quyền theo mô hình tư sản phương Tây.",
+      "C": "Xây dựng nhà nước của dân, do dân, vì dân và phát triển nền văn hóa dân tộc mới.",
+      "D": "Thúc đẩy công nghiệp hóa và chuyển đổi cơ cấu kinh tế sang sản xuất hàng hóa."
+    },
+    "answer": "C",
+    "explanation": "Đây là định hướng trọng tâm thể hiện bản chất dân chủ nhân dân của Nhà nước Việt Nam Dân chủ Cộng hòa."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 6,
+    "question": "Sự kiện nào diễn ra vào ngày 2 tháng 9 năm 1945?",
+    "options": {
+      "A": "Việt Nam Dân chủ Cộng hòa ban hành Hiến pháp đầu tiên.",
+      "B": "Bầu cử Quốc hội khóa I toàn quốc.",
+      "C": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa.",
+      "D": "Quân dân ta giành chiến thắng Điện Biên Phủ."
+    },
+    "answer": "C",
+    "explanation": ""
+  },
+  {
+    "stage": 1,
+    "questionNumber": 7,
+    "question": "Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa được thông qua vào năm nào?",
+    "options": {
+      "A": "1945",
+      "B": "1946",
+      "C": "1947",
+      "D": "1950"
+    },
+    "answer": "B",
+    "explanation": "Hiến pháp năm 1946 là bản Hiến pháp dân chủ đầu tiên, khẳng định quyền làm chủ của nhân dân."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 8,
+    "question": "Giai đoạn 1945–1954 thể hiện rõ đặc điểm nào của thời kỳ quá độ lên CNXH ở Việt Nam theo giáo trình \"Chủ nghĩa xã hội khoa học\"?",
+    "options": {
+      "A": "Quá độ từ xã hội tư bản phát triển sang CNXH, có cơ sở vật chất kỹ thuật hiện đại.",
+      "B": "Quá độ từ một nước nông nghiệp lạc hậu, bỏ qua chế độ tư bản chủ nghĩa, \"vừa xây dựng, vừa cải tạo\".",
+      "C": "Quá độ ngắn hạn, tập trung chủ yếu vào công nghiệp nặng và khoa học – kỹ thuật.",
+      "D": "Quá độ diễn ra đồng thời ở cả ba miền Bắc – Trung – Nam với điều kiện kinh tế phát triển ngang bằng."
+    },
+    "answer": "B",
+    "explanation": "Giai đoạn 1945–1954 là bước khởi đầu quá độ từ nền kinh tế nông nghiệp lạc hậu, đặt nền móng chính trị – tư tưởng đầu tiên của con đường XHCN, thể hiện đặc điểm \"vừa làm, vừa rút kinh nghiệm\"."
+  },
+  {
+    "stage": 1,
+    "questionNumber": 9,
+    "question": "Từ thực tiễn giai đoạn 1945–1954, có thể rút ra bài học nào về phương pháp và bước đi trong thời kỳ quá độ lên CNXH?",
+    "options": {
+      "A": "Cần tiến hành công nghiệp hóa nhanh chóng, ưu tiên các ngành nặng.",
+      "B": "Có thể áp dụng nguyên mẫu mô hình CNXH từ các nước phát triển.",
+      "C": "Phải có bước đi tuần tự, \"vừa làm, vừa rút kinh nghiệm\", phù hợp với điều kiện cụ thể của đất nước.",
+      "D": "Phải tạm dừng các nhiệm vụ chính trị để tập trung phát triển kinh tế."
+    },
+    "answer": "C",
+    "explanation": "Giai đoạn này cho thấy Việt Nam phải tiến hành từng bước vững chắc, dựa trên điều kiện lịch sử cụ thể – đúng tinh thần mục 3a, 3b của giáo trình về phương pháp và bước đi trong thời kỳ quá độ."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 1,
+    "question": "Quá trình xây dựng CNXH ở miền Bắc và đấu tranh giải phóng miền Nam thể hiện quy luật nào của triết học Mác – Lênin?",
+    "options": {
+      "A": "Quy luật thống nhất và đấu tranh của các mặt đối lập",
+      "B": "Quy luật phủ định của phủ định",
+      "C": "Quy luật từ lượng đổi thành chất đổi",
+      "D": "Quy luật mâu thuẫn giữa cơ sở hạ tầng và kiến trúc thượng tầng"
+    },
+    "answer": "A",
+    "explanation": "Hai miền tồn tại hai chế độ đối lập là biểu hiện sinh động của quy luật mâu thuẫn – động lực của phát triển xã hội."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 2,
+    "question": "Việc miền Bắc tiến hành xây dựng CNXH trong điều kiện \"một nước, hai chế độ\" phản ánh đặc điểm gì của quá trình quá độ ở Việt Nam?",
+    "options": {
+      "A": "Quá độ trực tiếp, thuận lợi như Liên Xô",
+      "B": "Quá độ gián tiếp, khó khăn, đặc thù, phải kết hợp hai nhiệm vụ",
+      "C": "Quá độ thông qua tư bản chủ nghĩa",
+      "D": "Quá độ thông qua liên minh quân sự"
+    },
+    "answer": "B",
+    "explanation": "Việt Nam quá độ lên CNXH trong điều kiện chưa phát triển tư bản chủ nghĩa, nên con đường gián tiếp, phức tạp và đặc thù."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 3,
+    "question": "Vai trò của miền Bắc trong cách mạng cả nước thể hiện nội dung nào của CNXH khoa học?",
+    "options": {
+      "A": "Vai trò của nhân tố kinh tế",
+      "B": "Vai trò của nhân tố chính trị – tổ chức",
+      "C": "Vai trò của nhân tố chủ quan trong sự nghiệp cách mạng XHCN",
+      "D": "Vai trò của đấu tranh giai cấp quốc tế"
+    },
+    "answer": "C",
+    "explanation": "Miền Bắc là \"hậu phương lớn\", thể hiện sức mạnh của nhân tố chủ quan – con người và tổ chức cách mạng."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 4,
+    "question": "Việc miền Nam kiên trì đấu tranh chính trị và vũ trang thể hiện nguyên lý nào của CNXH khoa học?",
+    "options": {
+      "A": "Tính giai cấp của nhà nước",
+      "B": "Tính tất yếu của bạo lực cách mạng để lật đổ ách áp bức",
+      "C": "Tính lịch sử – cụ thể của chủ nghĩa duy vật biện chứng",
+      "D": "Tính tương đối của chân lý"
+    },
+    "answer": "B",
+    "explanation": "Trong xã hội có áp bức, CNXH chỉ có thể được xác lập thông qua đấu tranh cách mạng, kể cả bằng bạo lực cách mạng."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 5,
+    "question": "Sự kết hợp hai nhiệm vụ xây dựng CNXH ở miền Bắc và giải phóng miền Nam phản ánh nguyên tắc nào của phương pháp luận biện chứng?",
+    "options": {
+      "A": "Nguyên tắc phát triển",
+      "B": "Nguyên tắc toàn diện và lịch sử – cụ thể",
+      "C": "Nguyên tắc thống nhất lý luận và thực tiễn",
+      "D": "Nguyên tắc phủ định biện chứng"
+    },
+    "answer": "B",
+    "explanation": "Đảng ta vận dụng nguyên tắc toàn diện, xử lý đúng đắn quan hệ giữa hai miền – vừa chiến đấu, vừa xây dựng."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 6,
+    "question": "Thắng lợi 1975 khẳng định tính đúng đắn của quy luật nào trong CNXH khoa học?",
+    "options": {
+      "A": "Quy luật phát triển không đồng đều của CNXH",
+      "B": "Quy luật quá độ tất yếu từ CNTB lên CNXH",
+      "C": "Quy luật quan hệ sản xuất phù hợp với lực lượng sản xuất",
+      "D": "Quy luật lượng – chất"
+    },
+    "answer": "B",
+    "explanation": "Việt Nam chứng minh con đường CNXH là tất yếu, phù hợp quy luật lịch sử phát triển nhân loại."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 7,
+    "question": "Bài học lý luận rút ra từ giai đoạn này là gì?",
+    "options": {
+      "A": "Phải đặt nhân tố chính trị – tư tưởng lên hàng đầu trong thời kỳ quá độ",
+      "B": "Tập trung phát triển kinh tế tư nhân",
+      "C": "Hạn chế đấu tranh giai cấp",
+      "D": "Không cần liên minh quốc tế"
+    },
+    "answer": "A",
+    "explanation": "Nhờ vững vàng về chính trị – tư tưởng, miền Bắc mới đảm đương vai trò lãnh đạo, dẫn dắt toàn dân tộc."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 8,
+    "question": "Từ thực tiễn xây dựng CNXH ở miền Bắc và đấu tranh giải phóng miền Nam, bài học nào có giá trị nhất đối với công cuộc xây dựng CNXH hiện nay?",
+    "options": {
+      "A": "Phải đặt lợi ích dân tộc lên trên hết, gắn độc lập dân tộc với CNXH",
+      "B": "Ưu tiên phát triển kinh tế tư bản tư nhân",
+      "C": "Tập trung công nghiệp nặng, bỏ qua nông nghiệp",
+      "D": "Tách rời kinh tế với chính trị"
+    },
+    "answer": "A",
+    "explanation": "Giai đoạn 1954–1975 chứng minh chân lý Hồ Chí Minh: \"Không có gì quý hơn độc lập tự do\" — độc lập dân tộc là điều kiện tiên quyết để xây dựng CNXH; hai nhiệm vụ gắn bó hữu cơ."
+  },
+  {
+    "stage": 2,
+    "questionNumber": 9,
+    "question": "Trong bối cảnh toàn cầu hóa hiện nay, bài học từ tinh thần \"miền Bắc vừa sản xuất, vừa chiến đấu, vừa chi viện\" có ý nghĩa gì?",
+    "options": {
+      "A": "Giảm hợp tác quốc tế",
+      "B": "Tập trung một ngành nghề duy nhất",
+      "C": "Phân tán nguồn lực, chia nhỏ công việc",
+      "D": "Đề cao tính đoàn kết, kết hợp giữa các lĩnh vực để tạo sức mạnh tổng hợp"
+    },
+    "answer": "D",
+    "explanation": "Tinh thần đoàn kết toàn dân – toàn hệ thống thể hiện nguyên lý tính thống nhất và toàn diện của phát triển xã hội, nay vẫn cần để kết hợp kinh tế – quốc phòng – giáo dục – khoa học trong CNXH hiện đại."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 1,
+    "question": "Quá trình thống nhất đất nước sau 1975 đặt ra mâu thuẫn cơ bản nào?",
+    "options": {
+      "A": "Giữa dân tộc và tôn giáo",
+      "B": "Giữa yêu cầu phát triển nhanh với trình độ lực lượng sản xuất thấp",
+      "C": "Giữa hai hình thái ý thức xã hội",
+      "D": "Giữa quốc tế và trong nước"
+    },
+    "answer": "B",
+    "explanation": "Nước ta muốn tiến nhanh lên CNXH trong khi cơ sở vật chất còn yếu – mâu thuẫn giữa mục tiêu và điều kiện hiện thực."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 2,
+    "question": "Việc áp dụng cơ chế kế hoạch hóa tập trung thể hiện hạn chế nào về nhận thức triết học?",
+    "options": {
+      "A": "Phiến diện, duy ý chí, vi phạm quy luật khách quan",
+      "B": "Tôn trọng quy luật kinh tế khách quan",
+      "C": "Linh hoạt theo điều kiện cụ thể",
+      "D": "Đề cao vai trò thực tiễn"
+    },
+    "answer": "A",
+    "explanation": "Mô hình bao cấp tuyệt đối hóa vai trò chủ quan, vi phạm quy luật giá trị và quy luật quan hệ sản xuất – lực lượng sản xuất."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 3,
+    "question": "Việc tiến hành ba cuộc cách mạng (quan hệ sản xuất, khoa học – kỹ thuật, tư tưởng – văn hóa) phản ánh nội dung nào?",
+    "options": {
+      "A": "Tính toàn diện của quá trình cách mạng XHCN",
+      "B": "Tính kế thừa của lịch sử",
+      "C": "Vai trò của yếu tố tự nhiên",
+      "D": "Tính khách quan của thị trường"
+    },
+    "answer": "A",
+    "explanation": "Cách mạng XHCN là sự biến đổi toàn diện cả vật chất, tinh thần, chính trị, văn hóa."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 4,
+    "question": "Việc duy trì cơ chế bao cấp kéo dài dẫn đến hậu quả nào dưới góc độ triết học?",
+    "options": {
+      "A": "Tăng cạnh tranh lành mạnh",
+      "B": "Nâng cao năng suất lao động",
+      "C": "Làm suy yếu động lực của con người, triệt tiêu tính sáng tạo",
+      "D": "Củng cố tính thị trường"
+    },
+    "answer": "C",
+    "explanation": "Bao cấp tước bỏ động lực cá nhân, mâu thuẫn giữa hình thức phân phối và năng suất lao động."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 5,
+    "question": "Nguyên nhân sâu xa của khủng hoảng kinh tế – xã hội thời kỳ này là gì?",
+    "options": {
+      "A": "Tác động quốc tế",
+      "B": "Sai lầm trong nhận thức và vận dụng quy luật khách quan của CNXH",
+      "C": "Chiến tranh biên giới",
+      "D": "Thiếu lao động"
+    },
+    "answer": "B",
+    "explanation": "Đảng nhận ra mình vi phạm quy luật biện chứng, chưa tôn trọng quan hệ sản xuất – lực lượng sản xuất."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 6,
+    "question": "Bài học lý luận quan trọng từ giai đoạn này là gì?",
+    "options": {
+      "A": "Cần kết hợp giữa nhân tố khách quan và chủ quan trong quá trình phát triển",
+      "B": "Phải áp dụng triệt để kế hoạch hóa",
+      "C": "Hạn chế vai trò con người",
+      "D": "Xóa bỏ sở hữu tư nhân ngay lập tức"
+    },
+    "answer": "A",
+    "explanation": "Phát triển XHCN đòi hỏi hài hòa giữa quy luật khách quan và hoạt động chủ quan có ý thức."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 7,
+    "question": "Động lực phát triển trong CNXH theo quan điểm Mác – Lênin là gì?",
+    "options": {
+      "A": "Lợi nhuận",
+      "B": "Con người – nhân tố sáng tạo chủ yếu",
+      "C": "Thị trường",
+      "D": "Cạnh tranh tự do"
+    },
+    "answer": "B",
+    "explanation": "Con người là động lực trung tâm; khi cơ chế bao cấp triệt tiêu động lực, xã hội trì trệ."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 8,
+    "question": "Bài học lớn nhất rút ra từ sai lầm của thời kỳ bao cấp đối với quá trình phát triển hiện nay là gì?",
+    "options": {
+      "A": "Phải tôn trọng quy luật khách quan, tránh duy ý chí trong quản lý kinh tế – xã hội",
+      "B": "Nâng vai trò mệnh lệnh hành chính",
+      "C": "Tập trung tuyệt đối quyền lực Nhà nước",
+      "D": "Loại bỏ yếu tố thị trường"
+    },
+    "answer": "A",
+    "explanation": "Bao cấp triệt tiêu động lực và vi phạm quy luật giá trị; vì thế, bài học cốt lõi là phải tôn trọng quy luật khách quan – điều căn bản trong phương pháp luận duy vật biện chứng."
+  },
+  {
+    "stage": 3,
+    "questionNumber": 9,
+    "question": "Việc Việt Nam vượt qua khủng hoảng để bước vào Đổi mới năm 1986 chứng minh điều gì trong triết học Mác – Lênin?",
+    "options": {
+      "A": "Chân lý chỉ có một hình thức",
+      "B": "Lý luận không cần thực tiễn",
+      "C": "Lý luận luôn bất biến",
+      "D": "Thực tiễn là tiêu chuẩn của chân lý"
+    },
+    "answer": "D",
+    "explanation": "Thực tiễn đổi mới kinh tế khẳng định chân lý của Mác – Lênin chỉ đúng khi được vận dụng sáng tạo vào hoàn cảnh cụ thể, không máy móc, không giáo điều."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 1,
+    "question": "Sự ra đời của đường lối Đổi mới năm 1986 phản ánh quy luật nào?",
+    "options": {
+      "A": "Quy luật phủ định của phủ định",
+      "B": "Quy luật tiến hóa tự nhiên",
+      "C": "Quy luật lượng – chất",
+      "D": "Quy luật mâu thuẫn nội tại dẫn đến biến đổi"
+    },
+    "answer": "D",
+    "explanation": "Mâu thuẫn giữa cơ chế cũ và yêu cầu phát triển tất yếu dẫn đến sự ra đời của Đổi mới – một sự phủ định biện chứng."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 2,
+    "question": "Đổi mới thể hiện sự vận dụng nguyên lý nào của chủ nghĩa duy vật biện chứng?",
+    "options": {
+      "A": "Nguyên lý phát triển",
+      "B": "Nguyên lý toàn diện",
+      "C": "Nguyên lý nhân quả",
+      "D": "Nguyên lý phủ định"
+    },
+    "answer": "A",
+    "explanation": "Đổi mới là sự chuyển hóa tích cực, phản ánh quy luật phát triển liên tục, kế thừa và vượt qua cái cũ."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 3,
+    "question": "Mô hình \"kinh tế thị trường định hướng XHCN\" thể hiện sự thống nhất biện chứng giữa:",
+    "options": {
+      "A": "Cái phổ biến và cái riêng",
+      "B": "Kinh tế thị trường và định hướng XHCN",
+      "C": "Kinh tế tư bản và chính trị phong kiến",
+      "D": "Nhà nước và doanh nghiệp"
+    },
+    "answer": "B",
+    "explanation": "Đây là sự kết hợp sáng tạo giữa công cụ thị trường và mục tiêu XHCN, vừa cạnh tranh, vừa định hướng công bằng."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 4,
+    "question": "Đổi mới tư duy kinh tế cho thấy vai trò gì của ý thức xã hội?",
+    "options": {
+      "A": "Bị động, phụ thuộc vật chất",
+      "B": "Có tính độc lập tương đối và tác động trở lại cơ sở kinh tế",
+      "C": "Không ảnh hưởng đến kinh tế",
+      "D": "Tách rời tồn tại xã hội"
+    },
+    "answer": "B",
+    "explanation": "Ý thức đổi mới (chủ quan) thúc đẩy thay đổi thực tiễn (khách quan), chứng minh vai trò tích cực của tư duy."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 5,
+    "question": "Chính sách mở cửa và hội nhập thể hiện việc vận dụng nguyên tắc nào của CNXH khoa học?",
+    "options": {
+      "A": "Kết hợp sức mạnh dân tộc với sức mạnh thời đại",
+      "B": "Tách biệt hoàn toàn với thế giới",
+      "C": "Hạn chế giao lưu",
+      "D": "Phát triển nội lực thuần túy"
+    },
+    "answer": "A",
+    "explanation": "Việt Nam mở cửa để tận dụng thành tựu chung của nhân loại, đồng thời giữ vững độc lập tự chủ."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 6,
+    "question": "Bài học triết học quan trọng của công cuộc Đổi mới là gì?",
+    "options": {
+      "A": "Đặt chính trị tách rời kinh tế",
+      "B": "Xóa bỏ sở hữu tư nhân",
+      "C": "Tôn trọng quy luật khách quan, chống duy ý chí",
+      "D": "Phủ định vai trò thị trường"
+    },
+    "answer": "C",
+    "explanation": "Đổi mới thành công nhờ tôn trọng quy luật khách quan – nền tảng của thế giới quan Mác – Lênin."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 7,
+    "question": "Đổi mới chứng minh vai trò nào trong mối quan hệ giữa lý luận và thực tiễn?",
+    "options": {
+      "A": "Thực tiễn là tiêu chuẩn của chân lý",
+      "B": "Lý luận độc lập với thực tiễn",
+      "C": "Lý luận luôn đúng tuyệt đối",
+      "D": "Thực tiễn không cần lý luận"
+    },
+    "answer": "A",
+    "explanation": "Chính thực tiễn đổi mới chứng minh tính đúng đắn của chủ nghĩa Mác – Lênin khi được vận dụng sáng tạo."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 8,
+    "question": "Sự thành công của công cuộc Đổi mới khẳng định giá trị nào của chủ nghĩa Mác – Lênin?",
+    "options": {
+      "A": "Chủ nghĩa duy vật biện chứng về sự phát triển",
+      "B": "Thuyết định mệnh lịch sử",
+      "C": "Duy tâm khách quan",
+      "D": "Phủ nhận quy luật phát triển"
+    },
+    "answer": "A",
+    "explanation": "Đổi mới là phủ định biện chứng của cơ chế bao cấp; thể hiện rõ quy luật từ cái cũ sang cái mới dựa trên mâu thuẫn nội tại."
+  },
+  {
+    "stage": 4,
+    "questionNumber": 9,
+    "question": "Việc kết hợp phát triển kinh tế thị trường với định hướng XHCN mang lại bài học gì cho Việt Nam hôm nay?",
+    "options": {
+      "A": "Giảm vai trò con người",
+      "B": "Ưu tiên lợi nhuận tối đa",
+      "C": "Loại bỏ sở hữu nhà nước",
+      "D": "Phải biết dung hòa giữa hiệu quả kinh tế và công bằng xã hội"
+    },
+    "answer": "D",
+    "explanation": "Mô hình \"kinh tế thị trường định hướng XHCN\" thể hiện quy luật thống nhất giữa cái đối lập, vận dụng sáng tạo phép biện chứng để bảo đảm vừa phát triển, vừa công bằng."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 1,
+    "question": "Quá trình hội nhập quốc tế thể hiện quy luật nào của triết học Mác – Lênin?",
+    "options": {
+      "A": "Quy luật thống nhất giữa độc lập và phụ thuộc",
+      "B": "Quy luật khách quan về tính liên hệ phổ biến",
+      "C": "Quy luật đấu tranh giai cấp",
+      "D": "Quy luật phủ định biện chứng"
+    },
+    "answer": "B",
+    "explanation": "Trong thời đại toàn cầu hóa, mọi quốc gia đều liên hệ, tác động lẫn nhau – biểu hiện của tính liên hệ phổ biến."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 2,
+    "question": "Cách mạng công nghiệp 4.0 đặt ra yêu cầu triết học nào cho CNXH Việt Nam?",
+    "options": {
+      "A": "Tăng cường duy tâm chủ quan",
+      "B": "Nâng cao vai trò của khoa học – công nghệ như lực lượng sản xuất mới",
+      "C": "Giảm vai trò con người",
+      "D": "Loại bỏ nhân tố sáng tạo"
+    },
+    "answer": "B",
+    "explanation": "Khoa học – công nghệ là lực lượng sản xuất hàng đầu, đúng với quy luật biện chứng giữa lực lượng sản xuất và quan hệ sản xuất."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 3,
+    "question": "Đường lối phát triển bền vững thể hiện quan điểm nào của triết học Mác – Lênin?",
+    "options": {
+      "A": "Quan điểm phát triển toàn diện, hài hòa giữa con người – xã hội – tự nhiên",
+      "B": "Chỉ phát triển kinh tế",
+      "C": "Phủ nhận vai trò môi trường",
+      "D": "Tập trung tăng trưởng ngắn hạn"
+    },
+    "answer": "A",
+    "explanation": "Đây là sự vận dụng quan điểm toàn diện và lịch sử cụ thể, coi con người là trung tâm phát triển."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 4,
+    "question": "Chuyển đổi số và kinh tế tri thức là biểu hiện của quy luật nào?",
+    "options": {
+      "A": "Quy luật phát triển của lực lượng sản xuất",
+      "B": "Quy luật đấu tranh giai cấp",
+      "C": "Quy luật phủ định của phủ định",
+      "D": "Quy luật giá trị"
+    },
+    "answer": "A",
+    "explanation": "Khoa học – công nghệ số là biểu hiện mới của lực lượng sản xuất hiện đại."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 5,
+    "question": "Chính sách phát triển con người toàn diện thể hiện tư tưởng nào của chủ nghĩa Mác?",
+    "options": {
+      "A": "Con người tách khỏi xã hội",
+      "B": "Con người chỉ là công cụ lao động",
+      "C": "Con người bị chi phối hoàn toàn bởi vật chất",
+      "D": "Con người là động lực và mục tiêu của CNXH"
+    },
+    "answer": "D",
+    "explanation": "Chủ nghĩa Mác coi con người vừa là động lực, vừa là mục tiêu cuối cùng của sự nghiệp CNXH."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 6,
+    "question": "Bài học lý luận quan trọng nhất trong giai đoạn hội nhập là gì?",
+    "options": {
+      "A": "Cần vận dụng sáng tạo chủ nghĩa Mác – Lênin trong điều kiện mới",
+      "B": "Giữ nguyên mô hình cũ",
+      "C": "Phủ định kinh tế thị trường",
+      "D": "Tách rời quốc tế"
+    },
+    "answer": "A",
+    "explanation": "Hội nhập đòi hỏi tính sáng tạo trong vận dụng lý luận – không giáo điều, không xa rời thực tiễn."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 7,
+    "question": "Tư tưởng \"phát triển nhanh, bền vững, nhân văn\" phản ánh mối quan hệ biện chứng nào?",
+    "options": {
+      "A": "Giữa vật chất và ý thức",
+      "B": "Giữa đấu tranh giai cấp và chiến tranh",
+      "C": "Giữa tăng trưởng kinh tế và tiến bộ xã hội",
+      "D": "Giữa tự nhiên và siêu hình"
+    },
+    "answer": "C",
+    "explanation": "Phát triển bền vững là thống nhất biện chứng giữa lợi ích kinh tế và giá trị nhân văn – xã hội."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 8,
+    "question": "Trong bối cảnh Cách mạng công nghiệp 4.0, bài học lớn nhất từ tư tưởng CNXH khoa học là gì?",
+    "options": {
+      "A": "Khoa học – công nghệ là lực lượng sản xuất trực tiếp quyết định sức mạnh quốc gia",
+      "B": "Tư tưởng là yếu tố phụ",
+      "C": "Cần giảm đầu tư vào giáo dục",
+      "D": "Phát triển con người không cần thiết"
+    },
+    "answer": "A",
+    "explanation": "Thực tiễn đổi mới khẳng định khoa học – công nghệ là nhân tố quyết định; Việt Nam phải tận dụng công nghệ, đổi mới sáng tạo để đi nhanh."
+  },
+  {
+    "stage": 5,
+    "questionNumber": 9,
+    "question": "Bài học về phát triển bền vững trong CNXH Việt Nam hiện nay thể hiện nguyên lý nào của triết học Mác – Lênin?",
+    "options": {
+      "A": "Quan điểm siêu hình",
+      "B": "Quan điểm toàn diện và phát triển",
+      "C": "Quan điểm duy ý chí",
+      "D": "Quan điểm phi lịch sử"
+    },
+    "answer": "B",
+    "explanation": "Phát triển bền vững đòi hỏi xem xét mối quan hệ tổng thể giữa kinh tế – xã hội – môi trường – con người, phản ánh nguyên lý toàn diện và phát triển biện chứng."
+  }
+]
+

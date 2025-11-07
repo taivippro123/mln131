@@ -8,6 +8,7 @@ import PuzzleModal from './components/PuzzleModal'
 import FinalCompletionModal from './components/FinalCompletionModal'
 import CollectionModal from './components/CollectionModal'
 import { useLocalStorage } from './hooks/useLocalStorage'
+import { enableDevToolsProtection } from './utils/disableDevTools'
 
 const TILE_SIZE = 64
 const MAP_WIDTH = roadmapData.width
@@ -169,6 +170,11 @@ export default function App() {
       console.log('Khôi phục tiến trình:', { currentCheckpoint, completedCheckpoints })
     }
   }, [currentCheckpoint, completedCheckpoints])
+
+  // Bật bảo vệ DevTools khi component mount
+  useEffect(() => {
+    enableDevToolsProtection()
+  }, [])
 
   // Cập nhật scale factor khi resize window
   useEffect(() => {

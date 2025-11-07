@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import quizData from '/quiz.json'
 import PieceCollectedModal from './PieceCollectedModal'
 import NotificationModal from './NotificationModal'
+import { useQuizData } from '../hooks/useQuizData'
 
 const QuizModal = ({ isOpen, onClose, currentStage, onAnswerCorrect, onQuizComplete }) => {
+  const { quizData, loading: quizLoading, error: quizError } = useQuizData()
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const [showResult, setShowResult] = useState(false)
@@ -92,7 +93,7 @@ const QuizModal = ({ isOpen, onClose, currentStage, onAnswerCorrect, onQuizCompl
   }
 
   useEffect(() => {
-    if (isOpen && currentStage) {
+    if (isOpen && currentStage && quizData) {
       const stageQuestions = quizData[currentStage] || []
       setQuestions(stageQuestions)
       setCurrentQuestionIndex(0)
@@ -110,7 +111,7 @@ const QuizModal = ({ isOpen, onClose, currentStage, onAnswerCorrect, onQuizCompl
         setAvailablePieces(shuffledIndices)
       }
     }
-  }, [isOpen, currentStage])
+  }, [isOpen, currentStage, quizData])
 
   const currentQuestion = questions[currentQuestionIndex]
 
@@ -200,7 +201,46 @@ const QuizModal = ({ isOpen, onClose, currentStage, onAnswerCorrect, onQuizCompl
     }
   }
 
-  if (!isOpen || !currentQuestion) return null
+  if (!isOpen) return null
+
+  // Loading state
+  if (quizLoading) {
+    return (
+      <div className="fixed inset-0 z-[999] flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <div className="relative bg-white rounded-2xl shadow-2xl p-8 mx-4">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <p className="text-gray-700 font-semibold">Đang tải câu hỏi...</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Error state
+  if (quizError) {
+    return (
+      <div className="fixed inset-0 z-[999] flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose} />
+        <div className="relative bg-white rounded-2xl shadow-2xl p-8 mx-4 max-w-md">
+          <div className="text-center space-y-4">
+            <div className="text-red-500 text-5xl">⚠️</div>
+            <h3 className="text-xl font-bold text-gray-800">Lỗi tải dữ liệu</h3>
+            <p className="text-gray-600">{quizError}</p>
+            <button
+              onClick={handleClose}
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Đóng
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (!currentQuestion) return null
 
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100
   const isLastQuestion = currentQuestionIndex === questions.length - 1

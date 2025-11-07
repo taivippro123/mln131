@@ -1,5 +1,5 @@
 // Quiz API Service - Kết nối với MockAPI
-const MOCKAPI_BASE_URL = 'https://687b9cdcb4bc7cfbda868165.mockapi.io/quiz'
+const MOCKAPI_BASE_URL = 'https://690dc7b5bd0fefc30a024dfa.mockapi.io/quiz'
 
 export const quizApi = {
   // Lấy tất cả câu hỏi theo stage

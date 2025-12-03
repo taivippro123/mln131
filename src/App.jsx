@@ -9,6 +9,7 @@ import FinalCompletionModal from './components/FinalCompletionModal'
 import CollectionModal from './components/CollectionModal'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { enableDevToolsProtection } from './utils/disableDevTools'
+import { Analytics } from '@vercel/analytics/react'
 
 const TILE_SIZE = 64
 const MAP_WIDTH = roadmapData.width
@@ -669,6 +670,7 @@ export default function App() {
           </button>
         )}
       </div>
+      <Analytics />
     </div>
   )
 }
